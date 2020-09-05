@@ -5,7 +5,7 @@ import '../App.css';
 import { Layout, Menu } from 'antd';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import ErrorBoundary from "../components/errorBoundary"
 import Item from "../components/items";
 import Client from "../components/clients"
 
@@ -57,20 +57,20 @@ function App() {
             </Menu>
           </Sider>
           <Layout>
+          <ErrorBoundary>
             <Content style={{ margin: '24px 16px 0' }}>
 
               <Switch>
-                <Route path="/items" component={Item} />
+                <Route exact path={["/", "/items"]} component={Item} />
                 <Route path="/clients" component={Client} />
               </Switch>
 
             </Content>
-            <Footer style={{ textAlign: 'center' }}>ERP System ... Author : Nesreen Khalid</Footer>
+            </ErrorBoundary>
+            <Footer style={{ textAlign: 'center' }}>Sales System ... Author : Nesreen Khalid</Footer>
           </Layout>
         </Layout>
       </Layout>
-
-
     </Router>
 
   )
